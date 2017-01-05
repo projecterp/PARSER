@@ -1,0 +1,32 @@
+positive value means Shift and Negative means Reduce
+	E	$	F	i	(	+	*	)	T
+0	1	0	7	3	4				8
+1		A				2			
+2			7	3	4				11
+3		-5				-5	-5	-5	
+4	5		7	3	4				8
+5						2		6	
+6		-6				-6	-6	-6	
+7		-4				-4	-4	-4	
+8		-2				-2	9	-2	
+9			10	3	4				
+10		-3				-3	-3	-3	
+11		-1				-1	9	-1	
+
+Parsing : i+i*i
+                    Stack	Input                    	Action
+
+                        0	i+i*i$                   	Shift3
+                      0i3	+i*i$                    	Reduce5
+                      0F7	+i*i$                    	Reduce4
+                      0T8	+i*i$                    	Reduce2
+                      0E1	+i*i$                    	Shift2
+                    0E1+2	i*i$                     	Shift3
+                  0E1+2i3	*i$                      	Reduce5
+                  0E1+2F7	*i$                      	Reduce4
+                 0E1+2T11	*i$                      	Shift9
+               0E1+2T11*9	i$                       	Shift3
+             0E1+2T11*9i3	$                        	Reduce5
+            0E1+2T11*9F10	$                        	Reduce3
+                 0E1+2T11	$                        	Reduce1
+                      0E1	$                        	Success
